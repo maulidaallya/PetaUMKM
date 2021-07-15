@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSTS Integration</title>
+		<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" 
+			type="text/css">
+		
+		<script 
+			src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL"></script>
+		<script src="https://openlayers.org/en/v4.6.5/build/ol.js"></script>
+		<script src="https://cdn.rawgit.com/bjornharrtell/jsts/gh-pages/1.4.0/jsts.min.js"></script>
+	</head>
+	<body>
+		<div id="map" class="map"></div>
+		<script>
+		// this example uses JSTS for which we don't have an externs file.
+			var source = new ol.source.Vector();
+			fetch('https://raw.githubusercontent.com/maulidaallya/PetaUMKM/main/Peta%20UMKM.geojson').then(function(response) {
+			return response.json();
+			}).then(function(json) {
+			
+
+ });
+ var vectorLayer = new ol.layer.Vector({
+ source: source
+ });
+ var rasterLayer = new ol.layer.Tile({
+ source: new ol.source.OSM()
+ });
+ var map = new ol.Map({
+ layers: [rasterLayer, vectorLayer],
+ target: document.getElementById('map'),
+ view: new ol.View({
+ center: ol.proj.fromLonLat([110.577916, -7.659406]),
+ zoom: 15
+ })
+ });
+ </script>
+ </body>
+</html>
